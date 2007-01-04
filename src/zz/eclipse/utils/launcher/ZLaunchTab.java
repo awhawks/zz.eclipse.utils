@@ -34,6 +34,7 @@ public abstract class ZLaunchTab extends JavaLaunchTab
 		try
 		{
 			checkValid(aLaunchConfig);
+			setErrorMessage(null);
 			return true;
 		}
 		catch (InvalidLaunchConfiguration e)
@@ -45,7 +46,7 @@ public abstract class ZLaunchTab extends JavaLaunchTab
 	
 	/**
 	 * Checks that the given launch configuration is valid. If it is not valid,
-	 * this method exists with an {@link InvalidLaunchConfiguration}; it exists
+	 * this method exits with an {@link InvalidLaunchConfiguration}; it exists
 	 * normally otherwise.
 	 */
 	protected void checkValid(ILaunchConfiguration aLaunchConfiguration) throws InvalidLaunchConfiguration

@@ -49,7 +49,7 @@ public abstract class AbstractItemControl<K> extends Composite
 
 	protected void changed()
 	{
-		itsOptionsTab.changed(true);
+		itsOptionsTab.changed();
 	}
 	
 	/**

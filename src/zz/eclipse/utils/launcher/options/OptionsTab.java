@@ -113,7 +113,7 @@ public abstract class OptionsTab<K> extends ZLaunchTab
 	/**
 	 * Creates the SWT control used to edit the option corresponding
 	 * to the given item.
-	 * The control should call {@link #changed(boolean)} whenever its
+	 * The control should call {@link #changed()} whenever its
 	 * current value changes.
 	 */
 	protected abstract AbstractItemControl<K> createControl (
@@ -150,7 +150,6 @@ public abstract class OptionsTab<K> extends ZLaunchTab
 			}
 			
 			itsUpdating = false;
-			changed(false);
 		}
 		catch (CoreException e)
 		{
@@ -173,18 +172,16 @@ public abstract class OptionsTab<K> extends ZLaunchTab
 		}
 		
 		saveOptionsMap(theMap, aConfiguration);
-		
-		changed(false);
 	}
 
 	/**
 	 * This method is called whenever some state changes
 	 */
-	public void changed(boolean aChanged)
+	public void changed()
 	{
-		if (! itsUpdating && isDirty() != aChanged)
+		if (! itsUpdating)
 		{
-			setDirty(aChanged);
+			setDirty(true);
 			updateLaunchConfigurationDialog();
 		}
 	}
