@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="jar" name="zz.eclipse.utils">
+	
+	
+    <target name="init">
+    	<property name="build.dir" value="${basedir}/build"/>
+    	<property name="plugin.dir" value="${build.dir}/zz.eclipse.utils"/>
+    	<property name="classes.dir" value="${basedir}/classes"/>
+    	<property name="src.dir" value="${basedir}/src"/>
+    	
+    	<property name="eclipse.home" value="/home/gpothier/apps/eclipse-3.2.1"/>
+    	
+        <path id="default.classpath">
+        	<fileset dir="${eclipse.home}/plugins">
+        		<include name="*.jar"/>
+        	</fileset>
+        </path>
+
+    </target>
+	
+	
+	<target name="clean">
+		<delete failonerror="false">
+			<fileset dir="${classes.dir}"/>
+			<fileset dir="${build.dir}"/>
+		</delete>
+	</target>
+	
+	<target name="compile" depends="init">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}"
+			nowarn="true"
+			destdir="${classes.dir}"
+			debug="true"
+	      	deprecation="on"
+			classpathref="default.classpath"/>
+	</target>
+	
+	<target name="jar" depends="init, compile">
+		
+		<mkdir dir="${plugin.dir}"/>
+		<jar jarfile="${plugin.dir}/plugin.jar" index="true">
+			<fileset dir="${classes.dir}" />
+		</jar>
+		
+	</target>
+	
+	<target name="plugin" depends="init, jar">
+		<copy todir="${plugin.dir}">
+			<fileset dir="${basedir}" includes="plugin.xml"/>
+		</copy>
+	</target>
+	
+	<target name="manual_export" depends="init, plugin">
+		
+	</target>
+</project>
