@@ -14,7 +14,7 @@ public class TextControl<K> extends AbstractItemControl<K> implements ModifyList
 {
 	private Text itsText;
 	
-	public TextControl(Composite aParent, OptionsTab<K> aOptionsTab, K aItem)
+	public TextControl(Composite aParent, OptionsControl<K> aOptionsTab, K aItem)
 	{
 		super(aParent, aOptionsTab, aItem);
 	}

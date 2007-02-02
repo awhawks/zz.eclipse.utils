@@ -15,7 +15,7 @@ implements ModifyListener
 {
 	private Text itsText;
 	
-	public IntegerControl(Composite aParent, OptionsTab<K> aOptionsTab, K aItem)
+	public IntegerControl(Composite aParent, OptionsControl<K> aOptionsTab, K aItem)
 	{
 		super(aParent, aOptionsTab, aItem);
 	}

@@ -12,15 +12,15 @@ import org.eclipse.swt.widgets.Label;
 
 public abstract class AbstractItemControl<K> extends Composite 
 {
-	private final OptionsTab<K> itsOptionsTab;
+	private final OptionsControl<K> itsOptionsControl;
 	private Label itsLabel;
 	private K itsItem;
 
-	public AbstractItemControl(Composite aParent, OptionsTab<K> aOptionsTab, K aItem)
+	public AbstractItemControl(Composite aParent, OptionsControl<K> aOptionsTab, K aItem)
 	{
 		super(aParent, SWT.BORDER);
 		itsItem = aItem;
-		itsOptionsTab = aOptionsTab;
+		itsOptionsControl = aOptionsTab;
 		
 		GridLayout theLayout = new GridLayout();
 		theLayout.numColumns = 1;
@@ -30,9 +30,9 @@ public abstract class AbstractItemControl<K> extends Composite
 		
 		itsLabel = new Label(this, SWT.WRAP);
 		StringBuilder theText = new StringBuilder();
-		theText.append(itsOptionsTab.getCaption(itsItem));
+		theText.append(itsOptionsControl.getCaption(itsItem));
 		theText.append("\n");
-		theText.append(itsOptionsTab.getDescription(itsItem));
+		theText.append(itsOptionsControl.getDescription(itsItem));
 		itsLabel.setText(theText.toString());
 		theGridData = new GridData(GridData.FILL, GridData.FILL, true, true);
 		itsLabel.setLayoutData(theGridData);
@@ -49,7 +49,7 @@ public abstract class AbstractItemControl<K> extends Composite
 
 	protected void changed()
 	{
-		itsOptionsTab.changed();
+		itsOptionsControl.changed();
 	}
 	
 	/**

@@ -19,7 +19,7 @@ implements SelectionListener
 {
 	private Button itsCheckButton;
 	
-	public BooleanControl(Composite aParent, OptionsTab<K> aOptionsTab, K aItem)
+	public BooleanControl(Composite aParent, OptionsControl<K> aOptionsTab, K aItem)
 	{
 		super(aParent, aOptionsTab, aItem);
 	}
