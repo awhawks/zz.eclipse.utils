@@ -3,7 +3,7 @@ package zz.eclipse.utils;
 import java.io.IOException;
 import java.net.URL;
 
-import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.IStatus; 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
@@ -16,7 +16,8 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class EclipseUtils extends AbstractUIPlugin {
+public class EclipseUtils extends AbstractUIPlugin 
+{
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "zz.eclipse.utils";

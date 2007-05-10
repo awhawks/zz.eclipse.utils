@@ -16,7 +16,6 @@ import org.eclipse.jdt.debug.ui.launchConfigurations.JavaLaunchTab;
 import org.eclipse.jdt.internal.debug.ui.JDIDebugUIPlugin;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 
-
 /**
  * This class can be used as a base for launch configuration tabs.
  * Provides several convenience methods and simplifies the handling of

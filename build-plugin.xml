@@ -19,7 +19,7 @@
     </target>
 	
 	
-	<target name="clean">
+	<target name="clean" depends="init">
 		<delete failonerror="false">
 			<fileset dir="${classes.dir}"/>
 			<fileset dir="${build.dir}"/>
