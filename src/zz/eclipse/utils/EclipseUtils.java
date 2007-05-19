@@ -1,6 +1,9 @@
 package zz.eclipse.utils;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.eclipse.core.runtime.IStatus; 
@@ -95,7 +98,17 @@ public class EclipseUtils extends AbstractUIPlugin
 		{
 			if (pluginLoc.startsWith("file:")) 
 			{
-				return pluginLoc.substring("file:".length()) + "lib"; 
+				try 
+				{
+					pluginLoc = pluginLoc.replaceAll(" ", "%20");
+					URI theUri = new URI(pluginLoc+"/lib");
+					File theFile = new File(theUri);
+					return theFile.getAbsolutePath();
+				} 
+				catch (URISyntaxException e) 
+				{
+					e.printStackTrace();
+				} 
 			}
 		}
 		
