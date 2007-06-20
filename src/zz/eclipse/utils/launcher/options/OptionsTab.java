@@ -44,7 +44,10 @@ public abstract class OptionsTab<K> extends ZLaunchTab
 	
 	public void setDefaults(ILaunchConfigurationWorkingCopy aConfiguration)
 	{
-		saveOptionsMap(itsOptionsControl.getDefaults(), aConfiguration);
+		if (itsOptionsControl != null)
+		{
+			saveOptionsMap(itsOptionsControl.getDefaults(), aConfiguration);
+		}
 	}
 
 	public void initializeFrom(ILaunchConfiguration aConfiguration)
