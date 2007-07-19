@@ -8,7 +8,7 @@
     	<property name="classes.dir" value="${basedir}/classes"/>
     	<property name="src.dir" value="${basedir}/src"/>
     	
-    	<property name="eclipse.home" value="/home/gpothier/apps/eclipse-3.2.1"/>
+    	<property name="eclipse.home" value="/home/gpothier/apps/eclipse-3.2.2"/>
     	
         <path id="default.classpath">
         	<fileset dir="${eclipse.home}/plugins">
