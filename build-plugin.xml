@@ -2,13 +2,16 @@
 <project default="jar" name="zz.eclipse.utils">
 	
 	
-    <target name="init">
+	<target name="settings">
+		<property file="../tod.plugin/ant.settings"/>
+		<fail message="Please copy ant.settings.template to ant.settings (in tod.plugin), and set the variables in it."/>
+	</target>	
+	
+	<target name="init" depends="settings">
     	<property name="build.dir" value="${basedir}/build"/>
     	<property name="plugin.dir" value="${build.dir}/zz.eclipse.utils"/>
     	<property name="classes.dir" value="${basedir}/classes"/>
     	<property name="src.dir" value="${basedir}/src"/>
-    	
-    	<property name="eclipse.home" value="/home/gpothier/apps/eclipse-3.2.2"/>
     	
         <path id="default.classpath">
         	<fileset dir="${eclipse.home}/plugins">
