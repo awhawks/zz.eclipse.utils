@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="jar" name="zz.eclipse.utils">
 	
-	
 	<target name="settings">
 		<property file="../tod.plugin/ant.settings"/>
-		<fail message="Please copy ant.settings.template to ant.settings (in tod.plugin), and set the variables in it."/>
+		<fail 
+			message="Please copy ant.settings.template to ant.settings (in tod.plugin), and set the variables in it."
+			unless="eclipse.home"/>
 	</target>	
 	
 	<target name="init" depends="settings">
