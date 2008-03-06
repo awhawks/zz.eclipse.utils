@@ -5,7 +5,15 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceProxy;
+import org.eclipse.core.resources.IResourceProxyVisitor;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus; 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
@@ -115,5 +123,47 @@ public class EclipseUtils extends AbstractUIPlugin
 		return null;
 	}
 
+	/**
+	 * Finds all the files with the given name in the project.
+	 */
+	public static IFile[] findFiles(IProject aProject, String aName)
+	{
+		try
+		{
+			FindFileVisitor theVisitor = new FindFileVisitor(aName);
+			aProject.accept(theVisitor, 0);
+			return theVisitor.getMatches();
+		}
+		catch (CoreException e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+	
+	private static class FindFileVisitor implements IResourceProxyVisitor
+	{
+		private final String itsName;
+		private List<IFile> itsMatches = new ArrayList<IFile>();
 
+		public FindFileVisitor(String aName)
+		{
+			itsName = aName;
+		}
+
+		public boolean visit(IResourceProxy aProxy)
+		{
+			if (aProxy.getType() == IResource.FILE) 
+			{
+				if (aProxy.getName().equals(itsName)) itsMatches.add((IFile) aProxy.requestResource());
+				return false;
+			}
+			else return true;
+		}
+		
+		public IFile[] getMatches()
+		{
+			return itsMatches.toArray(new IFile[itsMatches.size()]);
+		}
+		
+	}
 }
