@@ -19,7 +19,7 @@ import zz.eclipse.utils.launcher.ZLaunchTab;
 
 
 /**
- * This tab permits to configure miscellanous Reflex options.
+ * This tab permits to configure miscellanous options.
  * @author gpothier
  */
 public abstract class OptionsTab<K> extends ZLaunchTab
