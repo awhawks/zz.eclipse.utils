@@ -2,7 +2,7 @@
 <project default="jar" name="zz.eclipse.utils">
 	
 	<target name="settings">
-		<property file="../tod.plugin/ant.settings"/>
+		<property file="../TOD/tod.plugin/ant.settings"/>
 		<fail 
 			message="Please copy ant.settings.template to ant.settings (in tod.plugin), and set the variables in it."
 			unless="eclipse.home"/>
